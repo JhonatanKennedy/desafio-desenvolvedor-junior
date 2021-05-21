@@ -22,16 +22,6 @@ module.exports = class Animals{
             response.status(500).json({error: error});
         }
     }
-
-    static async apiGetAnimal(request,response){
-        try{
-            const animal = await AnimalsService.getAnimal(request.params);
-            response.json(animal);
-        }catch (error){
-            response.status(500).json({error: error});
-        }
-    }
-
     static async apiUpdateAnimal(request,response){
         try{
             const responseUpdate = await AnimalsService.updataAnimal(request.body,request.params);

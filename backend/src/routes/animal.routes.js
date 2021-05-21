@@ -4,8 +4,6 @@ const AnimalsController = require('../controllers/animals.controller');
 
 routes.get('/animals', AnimalsController.apiGetAllAnimals);
 
-routes.get('/animals/:_id', AnimalsController.apiGetAnimal);
-
 routes.post('/animals', AnimalsController.apiCreateAnimal);
 
 routes.put('/animals/:_id', AnimalsController.apiUpdateAnimal);

@@ -2,9 +2,10 @@ const Animals = require('../models/animals');
 
 module.exports = class AnimalsService{
     static async createAnimal(data){
+        const newAge = parseInt(data.age)
         const newPet = {
             name: data.name,
-            age: data.age,
+            age: newAge,
             type: data.type,
             race: data.race,
             owner: data.owner,
@@ -21,19 +22,13 @@ module.exports = class AnimalsService{
             console.log(`Nao conseguiu achar os animais ${error}`);
         }
     }
-    static async getAnimal(id){
-        try{
-            const animal = await Animals.findOne({_id: id});
-            return animal;
-        }catch (error){
-            console.log(`Não conseguiu achar o animal, ${error}`);
-        }
-    }
+
     static async updataAnimal(data,id){
+        const newAge = parseInt(data.age);
         try{
             const newAnimal = await Animals.updateOne({_id: id},{$set: {
                 name: data.name,
-                age: data.age,
+                age: newAge,
                 type: data.type,
                 race: data.race,
                 owner: data.owner,
@@ -47,8 +42,7 @@ module.exports = class AnimalsService{
     
     static async deleteAnimal(data){
         try{
-            const deletedAnimal = await Animals.findOneAndDelete(data._id);
-            console.log(deletedAnimal)
+            const deletedAnimal = await Animals.findOneAndDelete({_id: data._id});
             return deletedAnimal;
         }catch (error){
             console.log(error);

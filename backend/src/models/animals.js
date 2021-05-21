@@ -7,7 +7,7 @@ const animalSchema = new mongoose.Schema({
     type: String,
     race: String,
     owner: String,
-    phone: Number
+    phone: String
 });
 const Animals = mongoose.model('Animals',animalSchema);
 
